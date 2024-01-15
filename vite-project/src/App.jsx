@@ -7,9 +7,9 @@ import UseState3 from "./Components/UseState3"
 import UseState4 from "./Components/UseState4"
 import UseEffect from "./Components/UseEffect"
 import UseContext from './Components/UseContext'
+import Task from "./Components/Task"
 
-
-export const ToggleTheme = React.createContext()
+export const ToggleTheme = React.createContext()  
 function App() {
   
   const [state,setState] = useState(true)
@@ -20,16 +20,20 @@ function App() {
   
   return (
     <>
-      <ToggleTheme.Provider value={state}>
+      {/* <ToggleTheme.Provider value={state}>
         <button onClick={handleToggle}>Toggle</button>
         <UseContext />
-      </ToggleTheme.Provider>
+      </ToggleTheme.Provider> */}
 
-      <UseState />
+      {/* <UseState /> */}
       {/* <UseState2 /> */}
       {/* <UseState3 /> */}
       {/* <UseState4 /> */}
-      <UseEffect />
+      {/* <UseEffect /> */}
+      <ToggleTheme.Provider value={state}>
+        <button onClick={handleToggle}>Toggle</button>
+        <Task />
+      </ToggleTheme.Provider>
     </>
   )
 }
