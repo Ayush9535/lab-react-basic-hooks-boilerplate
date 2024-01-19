@@ -6,11 +6,20 @@ function Task(){
 
     const [state , setState] = useState(0)
     const [display , setDisplay] = useState(false)
-    
-    useEffect(()=>{
-        alert("Content is been Clicked")
-    },[display])
+    const [init, setInit] = useState(false)
 
+
+    useEffect(()=>{
+        setInit(true)
+        if (init){
+            alert("Content is been clicked")
+        }
+    } , [display])
+
+    let handleClick = ()=>{
+        setDisplay(!display)
+    }
+    
     const theme = useContext(ToggleTheme)
     const lightDarkMode = {
         backgroundColor : theme?"gray" : "black",
@@ -25,10 +34,7 @@ function Task(){
             <div>
                 {display && "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed voluptatum cum in exercitationem pariatur vero nam expedita ut incidunt eligendi."} 
             </div>
-            <button onClick={()=>{setDisplay(()=>{
-                // console.log(display)
-                return display?false : true
-            })}} style={{margin:"20px 0px"}}>Content</button>
+            <button onClick={handleClick} style={{margin:"20px 0px"}}>Content</button>
             <div>
                 {state}
             </div>
